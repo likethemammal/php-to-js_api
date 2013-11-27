@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PHP to JS Boilerplate</title>
+    <script src="js/lib/jquery-1.10.2.min.js"></script>
+    <script src="js/api.js"></script>
+</head>
+
+<body>
+    <h2>API status: <span id="status" style="color: #bbb;">Untested</span></h2>
+    <a href="#" id="button">Click to test API</a>
+</body>
+
+<script>
+
+    var $button = $('#button');
+    var $status = $('#status');
+
+    $button.click(function() {
+
+        var data = {
+            name: 'Chris',
+            color: '#F77F00'
+        };
+
+        var request = APIRequest('API_Test_Function', data);
+
+        request.done(function() {
+            $status.css({color: '#00dd00'})
+                   .text('Working');
+        });
+
+        request.fail(function() {
+            $status.css({color: '#dd0000'})
+                   .text('Broken');
+        });
+    });
+
+</script>
+
+</html>
